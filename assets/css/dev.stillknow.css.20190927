@@ -1,0 +1,42 @@
+.green{
+	color : green;
+}
+.gray{
+	color : gray;
+}
+.red{
+	color : red;
+}
+.orange{
+	color : orange;
+}
+.bitcoin{
+	color : orange;
+	height : 50px;
+}
+.m-left-text{
+	margin-left : 250px;
+}
+@media only screen and (max-width: 1024px) {
+    .m-left-text{
+	margin-left : 11rem;
+	}
+}
+.about .clients .client {
+	height : 80px;
+}
+/* black theme */
+/*
+.wrapper{
+	background-color : black;
+}
+.home .home-content p span{
+	color : white;
+}
+.nav-icon{
+	background-color:white;
+}
+.home .home-content .social{
+	background-color:white;
+}
+*/

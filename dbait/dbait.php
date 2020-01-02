@@ -1,0 +1,119 @@
+<? if("dbait2018!!" == $_REQUEST["code"] || 1==1 ){ ?>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	    <meta charset="utf-8">
+		<title>Dbait - Taro</title>
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	    <meta name="HandheldFriendly" content="true">
+	    <meta name="apple-touch-fullscreen" content="yes">
+		<link rel="stylesheet" type="text/css" href="./assets/css/stillknow.css" >
+		<link rel="stylesheet" href="./assets/css/example.css">
+		<script src="./assets/js/jquery.min.js"></script>
+		<script src="./assets/js/stillknow.js"></script>
+		<script src="./assets/js/deck.js"></script>
+	</head>
+	<body>
+	<header>
+		<!--
+		<div>
+			<img class="logo" src="./assets/img/logo/dbait_taro.png" />
+		</div>
+		-->
+	</header>
+<!--
+	<button>shuffle</button>
+	<button>flip</button>
+	<button>fan</button>
+	<button>sort</button>
+	<button>get6</button>
+-->
+	<div id="container"></div>
+
+        <script>
+            var $container = document.getElementById('container');
+
+            // create Deck
+            var deck = Deck();
+
+            // add to DOM
+            deck.mount($container);
+
+            deck.cards.forEach(function (card, i) {
+                card.setSide(Math.random() < 0.5 ? 'front' : 'back');
+
+                // explode
+                card.animateTo({
+                    delay: 1000 + i * 2, // wait 1 second + i * 2 ms
+                    duration: 500,
+                    ease: 'quartOut',
+
+                    x: Math.random() * window.innerWidth - window.innerWidth / 2,
+                    y: Math.random() * window.innerHeight - window.innerHeight / 2
+                });
+            });
+            $(document).ready(function(){
+            	deck.flip();
+            	deck.shuffle();
+            	deck.flip();
+            	deck.shuffle();
+            	deck.fan();
+            	deck.flip();
+            	deck.shuffle();
+            	deck.flip();
+            	
+            	$("a[class*=taro]").on("contextmenu",function(e){
+            		e.preventDefault();
+            		e.stopPropagation();
+            		var $el = $(this);
+            		$el.trigger("mousedown");
+            		if(!$el.attr("enlarged")){
+	            		$el.width($el.width()*2);
+	            		$el.height($el.height()*2);
+	            		$el.attr("enlarged","true");
+            		} else {
+            			$el.width($el.width()/2);
+	            		$el.height($el.height()/2);
+	            		$el.removeAttr("enlarged");
+            		}
+            		return false;
+            	});
+            	$("button").on("click",function(){
+            		var type = $(this).text();
+            		if(type == "get6"){
+            			deck.poker();
+            		} else if(type == "flip"){
+            			deck.flip();
+            		} else if(type == "fan"){
+            			deck.fan();
+            		} else if(type == "sort"){
+            			deck.sort();
+            		} else if(type == "shuffle"){
+            			deck.shuffle();
+            		} else if(type == "flip"){
+            			deck.flip();
+            		}
+            	});
+            });
+        </script>
+	<!--
+		<table cellspacing="20px">
+			<tr>
+				<td id="seq1" class="back"></td>
+				<td id="seq2" class="back"></td>
+				<td id="seq3" class="back"></td>
+			</tr>
+		</table>
+		<table cellspacing="20px">
+			<tr>
+				<td id="seq4" class="back"></td>
+				<td id="seq5" class="back"></td>
+				<td id="seq6" class="back"></td>
+			</tr>
+		</table>
+		<div id="dummy" style="display:none;"></div>
+	-->
+	</body>
+</html>
+<? } ?>

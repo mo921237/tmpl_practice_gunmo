@@ -1,0 +1,20 @@
+body {
+	background-image: url("../img/background/universe_compressed_vertical.jpg");
+	background-size: 100%;
+}
+.logo {
+	background-color: rgba(255,255,255,0.7);
+    border-radius: 5px;
+}
+header {
+	height: 20%;
+}
+button {
+	width: 16%;
+    font-size: 15px;
+    background-color: #f1cb65d9;
+    border: 1px rgb(181, 183, 186) solid;
+    border-radius: 10px;
+    color: #050708;
+    max-width: 100px;
+}
